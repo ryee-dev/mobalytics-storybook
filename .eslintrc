@@ -1,0 +1,72 @@
+{
+  "settings": {
+    "import/resolver": {
+      "root-import": {
+        "rootPathPrefix": "@",
+        "rootPathSuffix": "src",
+        "extensions": [".js", ".ts", ".tsx", ".jsx", ".mdx"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "react",
+    "react-hooks",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    //    "eslint-config-prettier/@typescript-eslint",
+    "prettier",
+    //    "plugin:prettier/recommended",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    // @typescript-eslint
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/indent": 0,
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/no-unused-vars": [
+      1,
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/semi": 1,
+
+    // react
+    "react/react-in-jsx-scope": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0,
+    "react/require-default-props": 0,
+    "react/no-unescaped-entities": 1,
+
+    // misc
+    "no-console": 0
+  }
+}

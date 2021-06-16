@@ -1,0 +1,60 @@
+{
+  "name": "mobalytics-storybook",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": false,
+  "description": "Mobalytics Storybook",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryee-dev/mobalytics-storybook"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "build-storybook-docs": "build-storybook -s public --docs",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@storybook/addon-a11y": "^6.2.9",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/node-logger": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@types/react": "^17.0.9",
+    "@types/react-dom": "^17.0.6",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-unicorn": "^33.0.1",
+    "prettier": "^2.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {},
+  "keywords": [
+    "typescript",
+    "react",
+    "storybook"
+  ]
+}
