@@ -1,4 +1,4 @@
-export interface ButtonProps {
+interface ButtonProps {
   variant?: string;
   size?: string;
   label?: string;
@@ -7,3 +7,11 @@ export interface ButtonProps {
   icon?: boolean;
   uniformPadding?: boolean;
 }
+
+interface TabsProps {
+  variant?: string;
+  icons?: boolean;
+  disabled?: boolean;
+}
+
+export type { ButtonProps, TabsProps };
