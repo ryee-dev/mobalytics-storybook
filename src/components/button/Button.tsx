@@ -1,55 +1,43 @@
 import React from 'react';
-import { css } from '@emotion/react';
 import { ButtonProps } from '../../types';
-
-import { MobalyticsButton, IconWrapper } from './Button.css';
-
-const iconStyles = (size, loading) => css`
-  margin-right: ${loading && size === 'lg' ? '12px' : '8px'};
-
-  ${size === 'md'
-    ? `
-    height: 24px;
-    width: 24px;    
-  `
-    : undefined}
-
-  ${size !== 'lg'
-    ? `
-    height: 16px;
-    width: 14px;    
-  `
-    : undefined}
-`;
+import { MobalyticsButton } from './Button.css';
 
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   size = 'md',
   loading = false,
   label,
+  labelVisible = true,
   icon = false,
+  uniformPadding = false,
   ...props
 }) => {
-  console.log(size);
   return (
-    <MobalyticsButton type="button" variant={variant} size={size} loading={loading} icon={icon} {...props}>
-      <IconWrapper>
-        {(loading && (
+    <MobalyticsButton
+      type="button"
+      loading={loading}
+      variant={variant}
+      size={size}
+      icon={icon}
+      disabled={loading}
+      labelVisible={labelVisible}
+      uniformPadding={uniformPadding}
+      {...props}
+    >
+      {loading ? (
+        <span className="spinner">
           <img
-            css={iconStyles(size, loading)}
             src="https://storage.googleapis.com/cdn.mobalytics.gg/assets/common/icons/spinner.svg"
             alt="loading"
           />
-        )) ||
-          (icon && (
-            <img
-              css={iconStyles(size, loading)}
-              src="https://fastcdn.mobalytics.gg/assets/common/icons/all-option.svg"
-              alt="icon"
-            />
-          ))}
-      </IconWrapper>
-      {label}
+          {labelVisible && label}
+        </span>
+      ) : (
+        <span>
+          {icon && <img src="https://fastcdn.mobalytics.gg/assets/common/icons/all-option.svg" alt="icon" />}
+          {labelVisible && label}
+        </span>
+      )}
     </MobalyticsButton>
   );
 };

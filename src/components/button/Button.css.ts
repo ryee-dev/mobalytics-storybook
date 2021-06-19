@@ -1,41 +1,98 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-const defaultStyles = (props) =>
+const dynamicStyle = (props) =>
   css`
-    padding: ${(props.size === 'sm' ? '4px 16px' : undefined) ||
-    (props.size === 'md' ? '8px 20px' : undefined) ||
-    (props.size === 'lg' ? '12px 24px' : undefined)};
+    ${props.loading
+      ? css`
+          background-color: ${props.variant === 'primary' && '#986f25'};
+          background-color: ${props.variant === 'secondary' && '#3a3c72'};
+          background-color: ${props.variant === 'tertiary' && '#1d1936'};
+        `
+      : css`
+          background-color: ${props.variant === 'primary' && '#af8f4d'};
+          background-color: ${props.variant === 'secondary' && '#565895'};
+          background-color: ${props.variant === 'tertiary' && '#211d41'};
+        `}
+
+    border: ${props.variant === 'tertiary' && '1px solid rgb(56, 47, 102)'};
+
+    ${!props.uniformPadding
+      ? css`
+          ${props.size === 'sm' &&
+          css`
+            padding: ${(props.icon && props.labelVisible) || (props.loading && props.labelVisible)
+              ? '4px 12px 4px 8px'
+              : '4px 16px'};
+            font-size: 12px;
+          `}
+          ${props.size === 'md' &&
+          css`
+            padding: ${(props.icon && props.labelVisible) || (props.loading && props.labelVisible)
+              ? '8px 16px 8px 12px'
+              : '8px 20px'};
+            font-size: 14px;
+          `}
+      ${props.size === 'lg' &&
+          css`
+            padding: ${(props.icon && props.labelVisible) || (props.loading && props.labelVisible)
+              ? '12px 20px 12px 16px'
+              : '12px 24px'};
+            font-size: 16px;
+          `};
+        `
+      : css`
+          padding: ${props.size === 'sm' ? '8px' : '12px'};
+        `}
   `;
 
-const buttonStyles = (props) =>
+const iconStyles = (props) =>
   css`
-    padding: ${(props.size === 'sm' && !props.icon ? '4px 16px' : undefined) ||
-    (props.size === 'md' && !props.icon ? '8px 20px' : undefined) ||
-    (props.size === 'lg' && !props.icon ? '12px 24px' : undefined) ||
-    (props.size === 'sm' && props.icon ? '4px 12px 4px 8px' : undefined) ||
-    (props.size === 'md' && props.icon ? '8px 16px 8px 12px' : undefined) ||
-    (props.size === 'lg' && props.icon ? '12px 20px 12px 16px' : undefined)};
+    ${props.loading
+      ? css`
+          ${props.size === 'lg'
+            ? css`
+                height: 24px;
+                width: 24px;
+              `
+            : css`
+                height: 16px;
+                width: 16px;
+              `}
+        `
+      : css`
+          ${props.size === 'lg'
+            ? css`
+                height: 24px;
+                width: 24px;
+              `
+            : css`
+                height: 16px;
+                width: 14px;
+              `}
+        `}
 
-    font-size: ${(props.size === 'sm' ? '12px' : undefined) ||
-    (props.size === 'md' ? '14px' : undefined) ||
-    (props.size === 'lg' ? '16px' : undefined)};
+    ${props.icon &&
+    props.labelVisible &&
+    css`
+      margin-right: ${props.icon && props.size === 'lg' ? '12px' : '8px'};
+    `}
 
-    background-color: ${(props.variant === 'primary' ? '#af8f4d' : undefined) ||
-    (props.variant === 'secondary' ? '#565895' : undefined) ||
-    (props.variant === 'tertiary' ? '#211d41' : undefined) ||
-    (props.variant === 'primary' && props.loading ? '#986f25' : undefined) ||
-    (props.variant === 'secondary' && props.loading ? '#3a3c72' : undefined) ||
-    (props.variant === 'tertiary' && props.loading ? '#1d1936' : undefined)};
-
-    border: ${props.variant === 'tertiary' ? '1px solid rgb(56, 47, 102)' : undefined};
+    ${props.loading &&
+    props.labelVisible &&
+    css`
+      margin-right: ${props.icon && props.size === 'lg' ? '12px' : '8px'};
+    `}
   `;
 
-const withSpinner = (props) =>
+const spinnerStyles = (props) =>
   css`
-    padding: ${(props.loading && props.size === 'sm' ? '4px 16px' : undefined) ||
-    (props.loading && props.size === 'md' ? '8px 20px' : undefined) ||
-    (props.loading && props.size === 'lg' ? '12px 24px' : undefined)};
+    ${!props.labelVisible &&
+    css`
+      padding: ${(props.loading && props.size === 'sm' && '4px 16px') ||
+      (props.loading && props.size === 'md' && '8px 20px') ||
+      (props.loading && props.size === 'lg' && '12px 24px')};
+    `}
   `;
 
 const MobalyticsButton = styled.button<any>`
@@ -60,21 +117,14 @@ const MobalyticsButton = styled.button<any>`
   text-transform: uppercase;
   filter: brightness(1);
   transition: all 0.1s ease-in;
-  ${buttonStyles};
+  ${dynamicStyle};
 
   &:hover {
     filter: brightness(1.1);
   }
-`;
 
-const IconWrapper = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  ${defaultStyles};
-
-  img {
-    &.spinner {
+  .spinner {
+    img {
       animation: 1.4s linear 0s infinite normal none running rotate;
       background: 0 0;
       border-style: none;
@@ -82,9 +132,18 @@ const IconWrapper = styled.span`
       display: block;
       opacity: 1;
       outline: none;
-      ${withSpinner};
     }
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    ${iconStyles};
   }
 `;
 
-export { MobalyticsButton, IconWrapper, withSpinner, defaultStyles };
+export { MobalyticsButton };

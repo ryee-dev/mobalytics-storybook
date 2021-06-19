@@ -15,6 +15,9 @@ export default {
       options: ['sm', 'md', 'lg'],
       control: { type: 'radio' },
     },
+    labelVisible: {
+      control: { type: 'checkbox' },
+    },
   },
   parameters: {
     backgrounds: {
