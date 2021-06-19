@@ -1,0 +1,26 @@
+diff --git a/node_modules/@storybook/addons/dist/cjs/hooks.js b/node_modules/@storybook/addons/dist/cjs/hooks.js
+index e6f47a7..e336d0f 100644
+--- a/node_modules/@storybook/addons/dist/cjs/hooks.js
++++ b/node_modules/@storybook/addons/dist/cjs/hooks.js
+@@ -250,7 +250,7 @@ var applyHooks = function applyHooks(applyDecorators) {
+       var hooks = context.hooks;
+       hooks.prevMountedDecorators = hooks.mountedDecorators;
+       hooks.mountedDecorators = new Set([getStory].concat(_toConsumableArray(decorators)));
+-      hooks.currentContext = context;
++      hooks.currentContext = Object.assign({}, context, { hooks: null });
+       hooks.hasUpdates = false;
+       var result = decorated(context);
+       numberOfRenders = 1;
+diff --git a/node_modules/@storybook/addons/dist/esm/hooks.js b/node_modules/@storybook/addons/dist/esm/hooks.js
+index 1c2b379..5bc8331 100644
+--- a/node_modules/@storybook/addons/dist/esm/hooks.js
++++ b/node_modules/@storybook/addons/dist/esm/hooks.js
+@@ -204,7 +204,7 @@ export var applyHooks = function applyHooks(applyDecorators) {
+       var hooks = context.hooks;
+       hooks.prevMountedDecorators = hooks.mountedDecorators;
+       hooks.mountedDecorators = new Set([getStory].concat(_toConsumableArray(decorators)));
+-      hooks.currentContext = context;
++      hooks.currentContext = Object.assign({}, context, { hooks: null });
+       hooks.hasUpdates = false;
+       var result = decorated(context);
+       numberOfRenders = 1;

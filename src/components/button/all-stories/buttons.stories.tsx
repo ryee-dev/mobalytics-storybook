@@ -36,24 +36,20 @@ export default {
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
-
 Primary.args = {
   variant: 'primary',
-  size: 'md',
   label: 'Button',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: 'secondary',
-  size: 'md',
   label: 'Button',
 };
 
 export const Tertiary = Template.bind({});
 Tertiary.args = {
   variant: 'tertiary',
-  size: 'md',
   label: 'Button',
 };
 
