@@ -15,29 +15,29 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <MobalyticsButton
       type="button"
-      loading={loading}
+      disabled={loading}
       variant={variant}
       size={size}
-      icon={icon}
-      disabled={loading}
       labelVisible={labelVisible}
       uniformPadding={uniformPadding}
+      icon={icon}
+      loading={loading}
       {...props}
     >
-      {loading ? (
-        <span className="spinner">
-          <img
-            src="https://storage.googleapis.com/cdn.mobalytics.gg/assets/common/icons/spinner.svg"
-            alt="loading"
-          />
-          {labelVisible && label}
-        </span>
-      ) : (
-        <span>
-          {icon && <img src="https://fastcdn.mobalytics.gg/assets/common/icons/all-option.svg" alt="icon" />}
-          {labelVisible && label}
-        </span>
-      )}
+      <span className="content-wrapper">
+        {icon ? (
+          <img src="https://fastcdn.mobalytics.gg/assets/common/icons/all-option.svg" alt="icon" />
+        ) : (
+          loading && (
+            <img
+              className="spinner"
+              src="https://storage.googleapis.com/cdn.mobalytics.gg/assets/common/icons/spinner.svg"
+              alt="loading"
+            />
+          )
+        )}
+        {labelVisible && label}
+      </span>
     </MobalyticsButton>
   );
 };

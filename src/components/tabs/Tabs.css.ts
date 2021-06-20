@@ -32,42 +32,42 @@ const tabGroupStyles = (props) =>
 
 const tabItemStyles = (props) =>
   css`
-      ${
-        props.variant === 'secondary'
-          ? css`
-              position: relative;
-              display: flex;
-              -webkit-box-align: center;
-              align-items: center;
-              margin: 0px 2rem;
-              box-sizing: content-box;
-              font-size: 1.2rem;
-              font-weight: 500;
-              line-height: 1.6rem;
-            `
-          : css`
-              box-sizing: border-box;
-              font-size: 1.2rem;
-              font-weight: 400;
-              line-height: 1.6rem;
-              outline: 0;
-              overflow: hidden;
-              padding: 1.2rem;
-              position: relative;
-            `
+    ${
+      props.variant === 'secondary'
+        ? css`
+            position: relative;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin: 0px 2rem;
+            box-sizing: content-box;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.6rem;
+          `
+        : css`
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.6rem;
+            outline: 0;
+            overflow: hidden;
+            padding: 1.2rem;
+            position: relative;
+          `
+    }
+    &:hover {
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        height: 2px;
+        background: rgb(203, 172, 111);
       }
-      &:hover {
-        &::after {
-          content: '';
-          position: absolute;
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-          height: 2px;
-          background: rgb(203, 172, 111);
-        }
-      }
-    }`;
+    }
+  }`;
 
 const tabCursorStyles = (props) =>
   css`

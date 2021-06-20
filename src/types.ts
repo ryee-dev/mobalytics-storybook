@@ -14,4 +14,11 @@ interface TabsProps {
   disabled?: boolean;
 }
 
-export type { ButtonProps, TabsProps };
+interface InputProps {
+  variant?: string;
+  icon?: boolean;
+  disabled?: boolean;
+  placeholder?: string;
+}
+
+export type { ButtonProps, TabsProps, InputProps };
