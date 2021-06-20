@@ -4,7 +4,7 @@ import { Tabs } from '../Tabs';
 import { ButtonProps } from '../../../types';
 
 export default {
-  title: 'Mobalytics/Tabs/All Stories',
+  title: 'Mobalytics/Input/All Stories',
   component: Tabs,
   argTypes: {
     variant: {

@@ -1,11 +1,11 @@
 import { Story, Meta } from '@storybook/react';
 
-import { Tabs } from './Tabs';
+import { Input } from './Input';
 import { ButtonProps } from '../../types';
 
 export default {
   title: 'Mobalytics/Input',
-  component: Tabs,
+  component: Input,
   argTypes: {
     variant: {
       options: ['primary', 'secondary'],
@@ -29,7 +29,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Tabs {...args} />;
+const Template: Story<ButtonProps> = (args) => <Input {...args} />;
 
 export const Properties = Template.bind({});
 

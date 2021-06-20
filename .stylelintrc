@@ -1,8 +1,16 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-styled-components",
     "stylelint-config-prettier"
-  ]
+  ],
+  "rules": {
+    "length-zero-no-unit": true
+  }
 }
